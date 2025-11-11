@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Bussin Burger</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header>
+    <h1>Bussin Burger 🍔</h1>
+    <p>Best burgers in town — order online!</p>
+  </header>
+
+  <main>
+    <section id="menu">
+      <h2>Menu</h2>
+
+      <div class="item">
+        <h3>Classic Burger — $6.99</h3>
+        <p>Beef patty, lettuce, tomato, secret sauce</p>
+        <button onclick="addToCart('Classic Burger', 6.99)">Add to cart</button>
+      </div>
+
+      <div class="item">
+        <h3>Bacon Deluxe — $8.99</h3>
+        <p>Bacon, cheddar, pickles</p>
+        <button onclick="addToCart('Bacon Deluxe', 8.99)">Add to cart</button>
+      </div>
+
+      <div class="item">
+        <h3>Veggie Burger — $7.49</h3>
+        <p>Plant-based patty, avocado, sprouts</p>
+        <button onclick="addToCart('Veggie Burger', 7.49)">Add to cart</button>
+      </div>
+    </section>
+
+    <section id="cart">
+      <h2>Your Order</h2>
+      <div id="cartItems">No items yet.</div>
+      <p>Total: $<span id="total">0.00</span></p>
+      <button id="placeOrder" onclick="placeOrder()">Place Order</button>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
