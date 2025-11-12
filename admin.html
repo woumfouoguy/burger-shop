@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Admin - Orders</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <style>
+    body{font-family:Arial, sans-serif;max-width:900px;margin:20px auto;padding:10px}
+    pre{white-space:pre-wrap;background:#f7f7f7;padding:10px;border-radius:6px}
+    .hidden{display:none}
+  </style>
+</head>
+<body>
+  <h1>Admin — Orders</h1>
+
+  <div id="login">
+    <p>Enter password to view orders:</p>
+    <input id="pwd" type="password" placeholder="password">
+    <button onclick="tryLogin()">Login</button>
+    <p style="color:gray;font-size:13px">(default password: <strong>letmein</strong>)</p>
+  </div>
+
+  <div id="orders" class="hidden">
+    <button onclick="location.reload()">Refresh</button>
+    <pre id="ordersPre">Loading…</pre>
+  </div>
+
+  <script>
+    function tryLogin(){
+      const p = document.getElementById('pwd').value;
+      if(p === 'letmein'){ document.getElementById('login').classList.add('hidden'); document.getElementById('orders').classList.remove('hidden'); fetchOrders(); }
+      else alert('Wrong password');
+    }
+    async function fetchOrders(){
+      const res = await fetch('/admin/orders');
+      if (!res.ok) { document.getElementById('ordersPre').innerText = 'Failed to load orders'; return; }
+      const data = await res.text();
+      document.getElementById('ordersPre').innerText = data;
+    }
+  </script>
+</body>
+</html>
